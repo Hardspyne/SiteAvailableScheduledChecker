@@ -2,7 +2,7 @@ package com.zubarev.websiteavailabilitychecker.model;
 
 public class SiteCheckScheduledTask {
     private String site;
-    private int refreshTime;
+    private int refreshTime = 30;
     private String email;
 
 
