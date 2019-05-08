@@ -1,18 +1,18 @@
 package com.zubarev.websiteavailabilitychecker.model;
 
-public class WebSiteCheckScheduledTask {
+public class SiteCheckScheduledTask {
     private String site;
     private int refreshTime;
     private String email;
 
-    public WebSiteCheckScheduledTask(String site, int refreshTime, String email) {
+    public SiteCheckScheduledTask(String site, int refreshTime, String email) {
 
         this.site = site;
         this.refreshTime = refreshTime;
         this.email = email;
     }
 
-    public WebSiteCheckScheduledTask() {
+    public SiteCheckScheduledTask() {
     }
 
 
