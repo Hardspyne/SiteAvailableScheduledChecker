@@ -5,16 +5,6 @@ public class SiteCheckScheduledTask {
     private int refreshTime;
     private String email;
 
-    public SiteCheckScheduledTask(String site, int refreshTime, String email) {
-
-        this.site = site;
-        this.refreshTime = refreshTime;
-        this.email = email;
-    }
-
-    public SiteCheckScheduledTask() {
-    }
-
 
     public String getSite() {
         return site;
