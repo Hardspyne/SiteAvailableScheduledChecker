@@ -25,10 +25,14 @@ public class SiteCheckerController {
     }
 
     @PostMapping("/start-task")
-    public String startScheduledTask(@ModelAttribute("task") SiteCheckScheduledTask siteCheckScheduledTask, Model model) throws IOException {
-        model.addAttribute("status", siteCheckTaskScheduler.checkSiteStatus());
-        return "result";
+    public String startScheduledTask(@ModelAttribute("task") SiteCheckScheduledTask task, Model model) throws IOException {
+        int siteStatus = siteCheckTaskScheduler.checkSiteStatus(task);
+
+        if (siteStatus != 0) {
+            model.addAttribute("status", siteStatus);
+            return "result";
+        } else {
+            return "unreachable-host";
+        }
     }
-
-
 }
