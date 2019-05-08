@@ -17,15 +17,15 @@ public class SiteCheckTaskScheduler {
 
     public int checkSiteStatus(SiteCheckScheduledTask task) throws IOException {
         int statusCode = HttpUrlConnectionUtil.getStatusCode(task.getSite());
+
         new Thread(() -> {
             while (true) {
                 try {
                     TimeUnit.MINUTES.sleep(task.getRefreshTime());
-
                     int currentStatusCode = HttpUrlConnectionUtil.getStatusCode(task.getSite());
 
-                    mailSenderUtil.sendMessage(task.getEmail(),task.getSite(),currentStatusCode);
                     if (statusCode != currentStatusCode) {
+                        mailSenderUtil.sendMessage(task.getEmail(), task.getSite(), currentStatusCode);
                         break;
                     }
                 } catch (InterruptedException | IOException e) {
