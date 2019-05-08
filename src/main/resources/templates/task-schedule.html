@@ -12,19 +12,27 @@
 </head>
 <body>
 <div class="container">
-    <h3>Website Availability Scheduled Checker</h3>
-    <hr>
+    <div>
+        <h3>Website Availability Scheduled Checker</h3>
+        <hr>
 
-    <p class="h4 mb-4">Description</p>
-    <form action="#" th:action="@{/start-task}" th:object="${task}" method="post">
+        <p class="h4 mb-4">you will receive an email when the site status is updated</p>
+        <form action="#" th:action="@{/start-task}" th:object="${task}" method="post">
 
-       Your site: <input type="text" th:field="*{site}" class="form-control mb-4 col-4"  placeholder="site" >
-       How often to check: <input type="text" th:field="*{refreshTime}" class="form-control mb-4 col-4"  placeholder="minutes">
-       Your email: <input type="text" th:field="*{email}" class="form-control mb-4 col-4"  placeholder="email">
+            <label for="site">Your site:</label> <input id="site" type="text" th:field="*{site}"
+                                                        class="form-control mb-4 col-4"
+                                                        placeholder="site">
+            <label for="time">How often to check(minutes):</label> <input id="time" type="text"
+                                                                          th:field="*{refreshTime}"
+                                                                          class="form-control mb-4 col-4"
+                                                                          placeholder="minutes">
+            <label for="email">Your email:</label> <input id="email" type="text" th:field="*{email}"
+                                                          class="form-control mb-4 col-4"
+                                                          placeholder="email">
 
-        <input type="submit" class="btn btn-info col-2" value="Start">
-    </form>
-
+            <input type="submit" class="btn btn-info col-2" value="Start">
+        </form>
+    </div>
 </div>
 </body>
 </html>

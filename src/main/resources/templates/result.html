@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Result</title>
 </head>
 <body>
-<p>Current status is </p>
-<p th:text="${status}" ></p>
-<p>When status changed you will get email message</p>
+<div class="container">
+    <h3>Website Availability Scheduled Checker</h3>
+    <hr>
+    <p class="h4 mb-4">Current status is <span th:text="${status}"></span></p>
+    <hr>
+    <p>you will receive an email when the site status is updated</p>
+</div>
 </body>
 </html>
