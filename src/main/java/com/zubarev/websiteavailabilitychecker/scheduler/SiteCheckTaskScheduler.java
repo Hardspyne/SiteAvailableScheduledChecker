@@ -3,9 +3,11 @@ package com.zubarev.websiteavailabilitychecker.scheduler;
 import com.zubarev.websiteavailabilitychecker.model.SiteCheckScheduledTask;
 import com.zubarev.websiteavailabilitychecker.utils.HttpUrlConnectionUtil;
 import com.zubarev.websiteavailabilitychecker.utils.MailSenderUtil;
+import com.zubarev.websiteavailabilitychecker.utils.ScreenshotSiteTakerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -25,10 +27,14 @@ public class SiteCheckTaskScheduler {
                     int currentStatusCode = HttpUrlConnectionUtil.getStatusCode(task.getSite());
 
                     if (statusCode != currentStatusCode) {
-                        mailSenderUtil.sendMessage(task.getEmail(), task.getSite(), currentStatusCode);
+                        ScreenshotSiteTakerUtil.goToSite(task.getSite());
+                        ScreenshotSiteTakerUtil.takeScreenshot();
+
+                        mailSenderUtil.sendMessageWithAttachment(
+                                task.getEmail(),task.getSite(),currentStatusCode,"screenshots/screenshot.png");
                         break;
                     }
-                } catch (InterruptedException | IOException e) {
+                } catch (InterruptedException | MessagingException | IOException e) {
                     e.printStackTrace();
                 }
             }
